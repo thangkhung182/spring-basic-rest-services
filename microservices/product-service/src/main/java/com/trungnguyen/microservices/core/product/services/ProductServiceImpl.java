@@ -1,6 +1,6 @@
 package com.trungnguyen.microservices.core.product.services;
 
-import com.trungnguyen.api.core.dto.Product;
+import com.trungnguyen.api.model.Product;
 import com.trungnguyen.api.core.product.ProductService;
 import com.trungnguyen.util.http.ServiceUtil;
 import lombok.RequiredArgsConstructor;

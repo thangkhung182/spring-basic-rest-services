@@ -13,6 +13,9 @@ repositories {
 }
 
 dependencies {
+	implementation project(':api')
+	implementation project(':util')
+
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
@@ -24,6 +27,12 @@ dependencies {
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
 	implementation 'org.mapstruct:mapstruct:1.4.2.Final'
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
+}
+
+task runReviewService(type: JavaExec) {
+	group = 'run'
+	classpath = sourceSets.main.runtimeClasspath
+	mainClass = 'com.trungnguyen.microservices.core.review.ReviewServiceApplication'
 }
 
 test {

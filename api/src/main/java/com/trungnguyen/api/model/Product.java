@@ -1,12 +1,12 @@
-package com.trungnguyen.api.core.dto;
+package com.trungnguyen.api.model;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Builder
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Product {
     private int productId;
 

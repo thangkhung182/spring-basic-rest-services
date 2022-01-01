@@ -1,6 +1,6 @@
 package com.trungnguyen.api.core.product;
 
-import com.trungnguyen.api.core.dto.Product;
+import com.trungnguyen.api.model.Product;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 

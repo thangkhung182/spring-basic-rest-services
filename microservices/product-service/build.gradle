@@ -29,6 +29,12 @@ dependencies {
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
 }
 
+task runProductService(type: JavaExec) {
+	group = 'run'
+	classpath = sourceSets.main.runtimeClasspath
+	mainClass = 'com.trungnguyen.microservices.core.product.ProductServiceApplication'
+}
+
 test {
 	useJUnitPlatform()
 }
