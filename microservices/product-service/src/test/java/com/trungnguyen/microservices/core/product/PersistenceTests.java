@@ -62,11 +62,11 @@ class PersistenceTests extends MongoDbTestBase {
         assertEquals("n2", foundEntity.getName());
     }
 
-//    @Test
-//    void delete() {
-//        repository.delete(savedEntity);
-//        assertFalse(repository.existsById(savedEntity.getId()));
-//    }
+    @Test
+    void delete() {
+        repository.delete(savedEntity);
+        assertFalse(repository.existsById(savedEntity.getId()));
+    }
 
     @Test
     void getByProductId() {

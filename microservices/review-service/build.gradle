@@ -33,7 +33,7 @@ dependencies {
 	implementation platform('org.testcontainers:testcontainers-bom:1.15.2')
 	testImplementation 'org.testcontainers:testcontainers'
 	testImplementation 'org.testcontainers:junit-jupiter'
-	testImplementation 'org.testcontainers:mysql'
+	testImplementation "org.testcontainers:mariadb:1.16.2"
 }
 
 task runReviewService(type: JavaExec) {

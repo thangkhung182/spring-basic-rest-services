@@ -18,7 +18,7 @@ public class ProductEntity {
     @Version
     private Integer version;
 
-    @Indexed(unique = true)
+    @Indexed(name = "product_uk", unique = true)
     private int productId;
 
     private String name;
