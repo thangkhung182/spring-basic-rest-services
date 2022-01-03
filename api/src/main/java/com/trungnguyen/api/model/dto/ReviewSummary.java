@@ -15,4 +15,6 @@ public class ReviewSummary {
   private String author;
 
   private String subject;
+
+  private String content;
 }
