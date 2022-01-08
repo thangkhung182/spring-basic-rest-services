@@ -12,3 +12,12 @@ logging:
   level:
     root: INFO
     com.trungnguyen.microservices: DEBUG
+
+---
+spring.config.activate.on-profile: docker
+
+server.port: 8080
+spring:
+  data:
+    mongodb:
+      host: mongodb

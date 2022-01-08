@@ -1,4 +1,35 @@
 services:
+  product:
+    build: microservices/product-service
+    image: product
+    mem_limit: 512m
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+
+  recommendation:
+    build: microservices/recommendation-service
+    image: recommendation
+    mem_limit: 512m
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+
+  review:
+    build: microservices/review-service
+    image: review
+    mem_limit: 512m
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+
+  product-composite:
+    build: microservices/product-composite-service
+    image: product-composite
+    mem_limit: 512m
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    ports:
+      - target: 8080
+        published: 8080
+
   mongodb:
     image: mongo:4.4.11
     mem_limit: 512m
@@ -12,8 +43,7 @@ services:
       retries: 60
 
   mariadb:
-    image: mariadb:10.7
-    mem_limit: 512m
+    image: mariadb:10.7.1
     ports:
       - "3306:3306"
     environment:
@@ -21,8 +51,3 @@ services:
       - MYSQL_DATABASE=review-db
       - MYSQL_USER=user
       - MYSQL_PASSWORD=pwd
-    healthcheck:
-      test: "/usr/bin/mysql --user=user --password=pwd --execute \"SHOW DATABASES;\""
-      interval: 5s
-      timeout: 2s
-      retries: 60

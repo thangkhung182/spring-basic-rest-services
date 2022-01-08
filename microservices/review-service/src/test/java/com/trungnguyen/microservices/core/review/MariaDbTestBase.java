@@ -5,7 +5,7 @@ import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.MariaDBContainer;
 
 public abstract class MariaDbTestBase {
-    private static MariaDBContainer database = new MariaDBContainer("mariadb:10.7");
+    private static MariaDBContainer database = new MariaDBContainer("mariadb:10.7.1");
 
     static {
         database.start();

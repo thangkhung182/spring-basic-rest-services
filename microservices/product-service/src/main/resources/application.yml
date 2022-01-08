@@ -15,5 +15,12 @@ logging:
     com.trungnguyen.microservices: DEBUG
     org.springframework.data.mongodb.core.MongoTemplate: DEBUG
 
-#spring.data.mongodb.host: mongodb
+---
+spring.config.activate.on-profile: docker
+
+server.port: 8080
+spring:
+  data:
+    mongodb:
+      host: mongodb
 
