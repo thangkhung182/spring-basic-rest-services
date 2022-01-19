@@ -9,6 +9,20 @@ spring.data.mongodb:
   database: product-db
   auto-index-creation: true
 
+spring.application.name: product
+
+app.eureka-server: localhost
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${app.eureka-server}:8761/eureka/
+    initialInstanceInfoReplicationIntervalSeconds: 5
+    registryFetchIntervalSeconds: 5
+  instance:
+    leaseRenewalIntervalInSeconds: 5
+    leaseExpirationDurationInSeconds: 5
+
 logging:
   level:
     root: INFO
@@ -17,6 +31,7 @@ logging:
 
 ---
 spring.config.activate.on-profile: docker
+app.eureka-server: eureka
 
 server.port: 8080
 spring:

@@ -43,6 +43,20 @@ api:
 server:
   port: 7000
 
+spring.application.name: product-composite
+
+app.eureka-server: localhost
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${app.eureka-server}:8761/eureka/
+    initialInstanceInfoReplicationIntervalSeconds: 5
+    registryFetchIntervalSeconds: 5
+  instance:
+    leaseRenewalIntervalInSeconds: 5
+    leaseExpirationDurationInSeconds: 5
+
 app:
   product-service:
     host: localhost
@@ -58,6 +72,8 @@ app:
 
 ---
 spring.config.activate.on-profile: docker
+
+app.eureka-server: eureka
 
 server.port: 8080
 app:

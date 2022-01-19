@@ -30,6 +30,13 @@ services:
       - target: 8080
         published: 8080
 
+  eureka:
+    build: spring-cloud/eureka-server
+    mem_limit: 512m
+    ports:
+      - target: 8761
+        published: 8761
+
   mongodb:
     image: mongo:4.4.11
     mem_limit: 512m
@@ -45,7 +52,8 @@ services:
   mariadb:
     image: mariadb:10.7.1
     ports:
-      - "3306:3306"
+      - target: 3306
+        published: 3308
     environment:
       - MYSQL_ROOT_PASSWORD=rootpwd
       - MYSQL_DATABASE=review-db
