@@ -1,5 +1,6 @@
 services:
   product:
+    platform: linux/amd64
     build: microservices/product-service
     image: product
     mem_limit: 512m
@@ -7,6 +8,7 @@ services:
       - SPRING_PROFILES_ACTIVE=docker
 
   recommendation:
+    platform: linux/amd64
     build: microservices/recommendation-service
     image: recommendation
     mem_limit: 512m
@@ -14,6 +16,7 @@ services:
       - SPRING_PROFILES_ACTIVE=docker
 
   review:
+    platform: linux/amd64
     build: microservices/review-service
     image: review
     mem_limit: 512m
@@ -21,6 +24,7 @@ services:
       - SPRING_PROFILES_ACTIVE=docker
 
   product-composite:
+    platform: linux/amd64
     build: microservices/product-composite-service
     image: product-composite
     mem_limit: 512m
@@ -31,6 +35,7 @@ services:
         published: 8080
 
   eureka:
+    platform: linux/amd64
     build: spring-cloud/eureka-server
     mem_limit: 512m
     ports:
