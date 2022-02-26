@@ -27,6 +27,12 @@ dependencyManagement {
     }
 }
 
+task runEurekaServer(type: JavaExec) {
+    group = 'run'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.trungnguyen.springcloud.eurekaserver.EurekaServerApplication'
+}
+
 test {
     useJUnitPlatform()
 }
