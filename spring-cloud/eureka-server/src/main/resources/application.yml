@@ -1,6 +1,10 @@
 server:
   port: 8761
 
+app:
+  eureka-username: trungnguyen
+  eureka-password: $2a$10$NWCZtqVpZTDN/mTFpTgEWOZpEXAqa9BACbMSDAcBrCzS6B7dLPDqG
+
 eureka:
   instance:
     hostname: localhost
