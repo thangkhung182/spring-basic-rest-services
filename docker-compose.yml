@@ -30,17 +30,19 @@ services:
     mem_limit: 512m
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-    ports:
-      - target: 8080
-        published: 8080
 
   eureka:
     platform: linux/amd64
     build: spring-cloud/eureka-server
     mem_limit: 512m
+
+  gateway:
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    build: spring-cloud/gateway
+    mem_limit: 512m
     ports:
-      - target: 8761
-        published: 8761
+      - "8080:8080"
 
   mongodb:
     image: mongo:4.4.11

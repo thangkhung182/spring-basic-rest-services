@@ -33,6 +33,12 @@ dependencyManagement {
     }
 }
 
+task runGateWay(type: JavaExec) {
+    group = 'run'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.trungnguyen.springcloud.gateway.GatewayApplication'
+}
+
 test {
     useJUnitPlatform()
 }
