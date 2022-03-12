@@ -1,15 +1,7 @@
-server:
-  port: 7001
-  error:
-    include-message: always
+server.port: 9999
+server.forward-headers-strategy: framework
 
-spring.data.mongodb:
-  host: localhost
-  port: 27017
-  database: product-db
-  auto-index-creation: true
-
-spring.application.name: product
+spring.application.name: auth-server
 
 app:
   eureka-username: u
@@ -26,19 +18,14 @@ eureka:
     leaseRenewalIntervalInSeconds: 5
     leaseExpirationDurationInSeconds: 5
 
+management.endpoint.health.show-details: "ALWAYS"
+management.endpoints.web.exposure.include: "*"
+
 logging:
   level:
     root: INFO
-    com.trungnguyen.microservices: DEBUG
-    org.springframework.data.mongodb.core.MongoTemplate: DEBUG
 
 ---
 spring.config.activate.on-profile: docker
+
 app.eureka-server: eureka
-
-server.port: 8080
-spring:
-  data:
-    mongodb:
-      host: mongodb
-

@@ -4,6 +4,16 @@ springdoc:
   packagesToScan: com.trungnguyen.microservices.composite.product
   pathsToMatch: /**
 
+  swagger-ui:
+    oauth2-redirect-url: https://localhost:8443/webjars/swagger-ui/oauth2-redirect.html
+    oauth:
+      clientId: writer
+      clientSecret: secret
+      useBasicAuthenticationWithAccessCodeGrant: true
+  oAuthFlow:
+    authorizationUrl: https://localhost:8443/oauth2/authorize
+    tokenUrl: https://localhost:8443/oauth2/token
+
 api:
 
   common:
@@ -43,14 +53,14 @@ api:
 server:
   port: 7000
 
-spring.application.name: product-composite
+app.auth-server: auth-server
 
-app.eureka-server: localhost
+spring.application.name: product-composite
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://${app.eureka-server}:8761/eureka/
+      defaultZone: "http://${app.eureka-username}:${app.eureka-password}@${app.eureka-server}:8761/eureka/"
     initialInstanceInfoReplicationIntervalSeconds: 5
     registryFetchIntervalSeconds: 5
   instance:
@@ -70,10 +80,18 @@ app:
     host: localhost
     port: 7003
 
+  eureka-username: u
+  eureka-password: p
+  eureka-server: localhost
+  auth-host: localhost
+
+spring.security.oauth2.resourceserver.jwt.issuer-uri: http://${app.auth-server}:9999
+
 ---
 spring.config.activate.on-profile: docker
 
 app.eureka-server: eureka
+app.auth-server: auth-server
 
 server.port: 8080
 app:
@@ -88,3 +106,4 @@ app:
   review-service:
     host: review
     port: 8080
+
