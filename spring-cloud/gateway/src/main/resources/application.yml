@@ -37,10 +37,30 @@ spring.cloud.gateway.routes:
     predicates:
       - Path=/product-composite/**
 
+  - id: oauth2-server
+    uri: lb://auth-server
+    predicates:
+      - Path=/oauth2/**
+
+  - id: oauth2-login
+    uri: lb://auth-server
+    predicates:
+      - Path=/login/**
+
+  - id: oauth2-error
+    uri: lb://auth-server
+    predicates:
+      - Path=/error/**
+
   - id: product-composite-swagger-ui
     uri: lb://product-composite
     predicates:
       - Path=/openapi/**
+
+  - id: product-composite-swagger-ui-webjars
+    uri: lb://product-composite
+    predicates:
+      - Path=/webjars/**
 
   - id: eureka-api
     uri: http://${app.eureka-server}:8761
@@ -56,7 +76,7 @@ spring.cloud.gateway.routes:
     filters:
       - SetPath=/
 
-  - id: eureka-web-o/ther
+  - id: eureka-web-other
     uri: http://${app.eureka-server}:8761
     predicates:
       - Path=/eureka/**
@@ -83,8 +103,6 @@ spring.cloud.gateway.routes:
       - Path=/headerrouting/**
     filters:
       - SetPath=/501
-
-server.forward-headers-strategy: framework
 
 logging:
   level:
