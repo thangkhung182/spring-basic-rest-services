@@ -17,11 +17,8 @@ ext {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.cloud:spring-cloud-config-server'
     implementation 'org.springframework.boot:spring-boot-starter-security'
-    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
-    implementation 'org.springframework.security.experimental:spring-security-oauth2-authorization-server:0.1.0'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
@@ -29,12 +26,6 @@ dependencyManagement {
     imports {
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
     }
-}
-
-task runAuthServer(type: JavaExec) {
-    group = 'run'
-    classpath = sourceSets.main.runtimeClasspath
-    mainClass = 'com.trungnguyen.sample.OAuth2AuthorizationServerApplication'
 }
 
 test {

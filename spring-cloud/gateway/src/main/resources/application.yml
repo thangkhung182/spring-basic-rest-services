@@ -76,6 +76,13 @@ spring.cloud.gateway.routes:
     filters:
       - SetPath=/
 
+  - id: config-server
+    uri: http://${app-config-server}:8888
+    predicates:
+      - Path=/config/**
+    filters:
+      - RewritePath=/config/(?<segment>.*), /$\{segment}
+
   - id: eureka-web-other
     uri: http://${app.eureka-server}:8761
     predicates:
